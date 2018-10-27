@@ -85,7 +85,7 @@
                 "lightness": "50"
             },
             {
-                "visibility": "simplified"
+                "visibility": "off"
             }
         ]
     },
@@ -164,7 +164,10 @@
             }
         ]
     }
-]
+],
+disableDefaultUI: true,
+clickableIcons: false
+
             });
 
             console.log("Location")
@@ -236,8 +239,7 @@
                         label: icon.label
                     });
                     marker.addListener('click', function () {
-                        infoWindow.setContent(infowincontent);
-                        infoWindow.open(map, marker);
+                        window.location = address
                     });
                 });
             });
