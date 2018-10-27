@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>Using MySQL and PHP with Google Maps</title>
+    <title>Travel Badger</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -27,7 +27,8 @@
     <script>
         var customLabel = {
             True: {
-                label: 'R'
+                label: 'A',
+                icon: 'http://127.0.0.1/Hack-Manchester-2018/Images/badger-pngrepo-com.png'
             },
             False: {
                 label: 'B'
@@ -38,8 +39,8 @@
 
 
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: new google.maps.LatLng(-33.863276, 151.207977),
-                zoom: 12,
+                center: new google.maps.LatLng(53.4771396, -2.2546459),
+                zoom: 16,
                 styles: [
     {
         "featureType": "administrative",
@@ -236,7 +237,7 @@ clickableIcons: false
                     var marker = new google.maps.Marker({
                         map: map,
                         position: point,
-                        label: icon.label
+                        icon: icon.icon
                     });
                     marker.addListener('click', function () {
                         window.location = address
