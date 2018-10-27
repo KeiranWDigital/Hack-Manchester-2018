@@ -41,7 +41,7 @@ while ($row = @mysqli_fetch_assoc($result)){
   // Add to XML document node
   echo '<marker ';
   echo 'id="' . $row['id'] . '" ';
-  echo 'name="' . parseToXML($row['name']) . '" ';
+  echo 'localstoragename="' . parseToXML($row['name']) . '" ';
   echo 'address="' . parseToXML($row['address']) . '" ';
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
