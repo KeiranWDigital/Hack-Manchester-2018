@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- div to display errors -->
+    <div id="result"></div>
+
+    <script>
+        // Check browser support
+        if (typeof (Storage) !== "undefined") {
+
+
+            //if there is nothing in the Page2 cookie (which there won't be if the page hasn't been viewed)
+            //null just means empty
+            if (localStorage.getItem("Page2") == null) {
+                //set it to true 
+                alert("False")
+                localStorage.setItem("Page2", "True");
+
+                //check is sum is empty (We need an number in sum to begin)
+                if (localStorage.getItem("Sum") == null) {
+                    localStorage.setItem("Sum", "0")
+
+                } 
+
+                localStorage.setItem("Sum", parseInt(localStorage.getItem("Sum")) + 1); //this increments the sum variable
+                    document.getElementById("result").innerHTML = "Item set to True" + "<br> Current sum variable is " + localStorage.getItem("Sum");
+            } else {
+                document.getElementById("result").innerHTML = "Not changed <br> Sum remains at: " + localStorage.getItem("Sum");
+
+            }
+
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+    </script>
+
+</body>
+
+</html>

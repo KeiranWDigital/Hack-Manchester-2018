@@ -25,6 +25,8 @@
     <div id="map"></div>
 
     <script>
+
+
         var delMarker = function (id) {
             marker = markers[id];
             marker.setMap(null);
@@ -34,13 +36,19 @@
 
         };
 
+        var image2 = {
+            url: 'http://127.0.0.1/Hack-Manchester-2018/Images/badger-pngrepo-com(1).png',
+
+        };
+
         var customLabel = {
             True: {
                 label: 'A',
                 icon: image
             },
-            False: {
-                label: 'B'
+            null: {
+                label: 'B',
+                icon: image2
             }
         };
 
@@ -49,7 +57,7 @@
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: new google.maps.LatLng(53.4771396, -2.2546459),
-                zoom:2,
+                zoom:17,
                 styles: [
                     {
                         "featureType": "administrative",
@@ -184,74 +192,67 @@
             setInterval(draw_current, 5000)
             var markers_list = [];
 
-            function draw_current() {
+          
+
+                function draw_current() {
                 
                 
-                    console.log("Location")
-                    // Try HTML5 geolocation.
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            var pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
+                console.log("Location")
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
 
-                            };
-                            console.log(pos.lat);
-                            console.log(pos.lng);
-                            var current_marker = new google.maps.Marker({
-                                position: pos,
-                                title: "Hello World!",
-                                icon: {
-                                    path: google.maps.SymbolPath.CIRCLE,
-                                    scale: 10,
-                                    strokeWeight: 1,
-                                    fillOpacity: 0.8,
-                                    fillColor: 'blue',
+                        };
+                        console.log(pos.lat);
+                        console.log(pos.lng);
+                        var current_marker = new google.maps.Marker({
+                            position: pos,
+                            title: "Hello World!",
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 10,
+                                strokeWeight: 1,
+                                fillOpacity: 0.8,
+                                fillColor: 'blue',
 
-                                },
-                                id: 1
-                                
+                            },
+                            id: 1
+                            
 
-                            });
-
-                    markers_list.push(current_marker);  
-                    
-                    console.log(markers_list[0])
-                            console.log(current_marker.id)
-                            // To add the marker to the map, call setMap();
-                            current_marker.setMap(map);
-
-                            //set center of map to current location 
-                            map.setCenter(new google.maps.LatLng(pos.lat, pos.lng));
-                        }, function () {
-                            handleLocationError(true, infoWindow, map.getCenter());
                         });
-                    } else {
-                        // Browser doesn't support Geolocation
-                        handleLocationError(false, infoWindow, map.getCenter());
-                    }
 
-
-                    var infoWindow = new google.maps.InfoWindow;
+                markers_list.push(current_marker);  
+                
+                console.log(markers_list[0])
+                        console.log(current_marker.id)
+                        // To add the marker to the map, call setMap();
+                        current_marker.setMap(map);
+                        setTimeout(function(){ current_marker.setMap(null); }, 5000);
+                        //set center of map to current location 
+                        map.setCenter(new google.maps.LatLng(pos.lat, pos.lng));
+                    }, function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
                 }
 
-                 // Sets the map on all markers in the array.
-      function setMapOnAll(map) {
-        for (var i = 0; i < markers_list.length; i++) {
-          markers_list[i].setMap(map);
 
-        }
-      }
+                var infoWindow = new google.maps.InfoWindow;
+                
 
-                 // Removes the markers from the map, but keeps them in the array.
-      function clearMarkers() {
-        setMapOnAll(null);
-      }
+                
+            }
+            
+            function remove(current_marker){
+                
 
-                function deleteMarkers() {
-        clearMarkers();
-        markers = [];
-      }
+            }
+ 
 
 
             // Change this depending on the name of your PHP or XML file
@@ -261,8 +262,8 @@
                 Array.prototype.forEach.call(markers, function (markerElem) {
                     var id = markerElem.getAttribute('id');
                     var name = markerElem.getAttribute('localstoragename');
-                    var address = markerElem.getAttribute('address');
-                    var type = markerElem.getAttribute('type');
+                    var address = "Pages/" + markerElem.getAttribute('address');
+                    var type = localStorage.getItem(name);
                     var point = new google.maps.LatLng(
                         parseFloat(markerElem.getAttribute('lat')),
                         parseFloat(markerElem.getAttribute('lng')));
@@ -289,7 +290,10 @@
             });
         }
 
-
+function changeMarkerPosition(marker,lat,lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    mark.setPosition(latlng);
+}
 
         function downloadUrl(url, callback) {
             var request = window.ActiveXObject ?
@@ -308,6 +312,16 @@
         }
 
         function doNothing() { }
+    </script>
+    <script>
+        console.log(localStorage.getItem("Sum"))
+    if (localStorage.getItem("Sum") == null){
+        var postcode = prompt("Please enter your postcode", "");
+        localStorage.setItem("Home", postcode)
+        localStorage.setItem("Sum",0)
+        window.location = "Pages/Instructions.html"
+
+    }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeRmfR_ykc83fzYlkT8JT7zb3xtxyAJwE&callback=initMap">
     </script>

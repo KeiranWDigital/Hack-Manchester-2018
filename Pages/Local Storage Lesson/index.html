@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Local Storage demo</h1>
+<div id="Page1"></div>
+<div id="Page2"></div>
+
+<script>
+// Check browser support - does the browser support local storage (Some old browsers don't)
+if (typeof(Storage) !== "undefined") {
+    // Retrieve and display the values
+    document.getElementById("Page1").innerHTML = "Page 1 value is " + localStorage.getItem("Page1");
+    document.getElementById("Page2").innerHTML = "Page 2 value is " + localStorage.getItem("Page2");
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+</body>
+</html>

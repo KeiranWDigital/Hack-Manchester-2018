@@ -1,0 +1,103 @@
+<!Doctype HTML>
+<html lang="en">
+
+<!-- proper mobile rendering and touch zooming-->   
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <head>
+    <link rel="stylesheet" type="text/css" href="style.css">   
+        <title>Granada Studios</title>
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="video">
+                        <h1>Granada Studios</h1>
+                        <div class="embed-responsive embed-responsive-16by9">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/C3wvGKdYJfQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>                        </div>   
+                    </div>          
+                </div>
+            </div>
+
+          
+
+            <div class="row">
+              <div class="col-sm-8">
+                <div id="bullets">
+                    <br>
+                   <ul>
+                       <li>The original home of Coronation Street, first broadcast in 1960.</li>
+                       <li>Site being redeveloped as a new urban district, St Johns.</li>
+                       <li>Did you know - a canal runs in a tunnel under the site.</li>
+                   </ul>
+                </div>
+              </div>
+            
+              <div class="col-sm-4">
+                <div id="twitter">
+                    <a class="twitter-timeline" data-height="232" data-dnt="true" data-theme="dark" data-link-color="#9266CC" href="https://twitter.com/stjohnsmcr?lang=en"></a>
+                      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+              </div>
+           </div>
+       
+           <div class="row">
+               <div class="col-sm-12">
+                   <div id=mapButton>
+                       <br>
+                        <button type="button" class="btn btn-light center-block">Back to the map</button>
+                   </div>
+               </div>
+           </div>
+        <!--Local storage cookies - Keiran-->
+        <script>
+                // Check browser support
+                if (typeof (Storage) !== "undefined") {
+        
+        
+                    //if there is nothing in the Page1 cookie (which there won't be if the page hasn't been viewed)
+                    //null just means empty
+                    if (localStorage.getItem("Granada") == null) {
+                        //set it to true 
+                        
+                        //alert("False")
+                        localStorage.setItem("Granada", "True");
+        
+                        //check is sum is empty (We need an number in sum to begin)
+                        if (localStorage.getItem("Sum") == null) {
+                            console.log("Sum created")
+                            localStorage.setItem("Sum", "0")
+        
+                        } 
+        
+                        localStorage.setItem("Sum", parseInt(localStorage.getItem("Sum")) + 1); //this increments the sum variable
+                        console.log("Item set to True <br> Current sum variable is " + localStorage.getItem("Sum"))
+                    } else {
+                        console.log("Not changed <br> Sum remains at: " + localStorage.getItem("Sum"))
+        
+                    }
+        
+                } else {
+                    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+                }
+            </script>
+      
+    </body>
+</html>
+
