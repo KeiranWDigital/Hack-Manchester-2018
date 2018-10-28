@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 
 <head>
-    
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -87,23 +87,51 @@
     </div>
     </div>
 
+    <div class="modal fade" id="Badge3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Snake!</h4>
+                </div>
+
+
+
+                <div class="modal-body">
+                    <p>Snake!!
+                        <br><br>
+                        Better luck next time...
+                        <br><br>
+                        <img class="center-block" src="Images/Snake.png" alt="Snake">
+                    </p>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!--Map Scripts-->
     <div id="map"></div>
 
     <script>
-// Find the right method, call on correct element
-function launchFullScreen(element) {
-  if(element.requestFullScreen) {
-    element.requestFullScreen();
-  } else if(element.mozRequestFullScreen) {
-    element.mozRequestFullScreen();
-  } else if(element.webkitRequestFullScreen) {
-    element.webkitRequestFullScreen();
-  }
-}
+        // Find the right method, call on correct element
+        function launchFullScreen(element) {
+            if (element.requestFullScreen) {
+                element.requestFullScreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+                element.webkitRequestFullScreen();
+            }
+        }
 
-// Launch fullscreen for browsers that support it!
-launchFullScreen(document.documentElement); // the whole page
+        // Launch fullscreen for browsers that support it!
+        launchFullScreen(document.documentElement); // the whole page
 
 
 
@@ -407,14 +435,21 @@ launchFullScreen(document.documentElement); // the whole page
         if (localStorage.getItem("Sum") == 1 && localStorage.getItem("1") == null) {
             console.log("Badge1")
             $("#Badge1").modal('show');
-            localStorage.setItem("1",1)
+            localStorage.setItem("1", 1)
 
         }
 
         if (localStorage.getItem("Sum") == 2 && localStorage.getItem("2") == null) {
-            console.log("Badge1")
+            console.log("Badge2")
             $("#Badge2").modal('show');
-            localStorage.setItem("2",1)
+            localStorage.setItem("2", 1)
+
+        }
+
+         if (localStorage.getItem("Sum") == 3 && localStorage.getItem("3") == null) {
+            console.log("Badge3")
+            $("#Badge3").modal('show');
+            localStorage.setItem("3", 1)
 
         }
     </script>
