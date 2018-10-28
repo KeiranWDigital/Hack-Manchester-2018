@@ -1,6 +1,7 @@
 <!DOCTYPE html >
 
 <head>
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -48,7 +49,7 @@
                         <br><br>
                         Keep on exploring to collect the sett ;)
                         <br><br>
-                        <img class="center-block img-responsive" src="Pages\Pictures\TravelBadger1.jpeg" alt="First Badge">
+                        <img class="center-block img-responsive img-circle" src="Pages\Pictures\BeethamBadger.png" alt="First Badge">
                     </p>
                 </div>
             </div>
@@ -90,6 +91,20 @@
     <div id="map"></div>
 
     <script>
+// Find the right method, call on correct element
+function launchFullScreen(element) {
+  if(element.requestFullScreen) {
+    element.requestFullScreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullScreen) {
+    element.webkitRequestFullScreen();
+  }
+}
+
+// Launch fullscreen for browsers that support it!
+launchFullScreen(document.documentElement); // the whole page
+
 
 
         var delMarker = function (id) {
@@ -384,8 +399,6 @@
     <script>
         console.log(localStorage.getItem("Sum"))
         if (localStorage.getItem("Sum") == null) {
-            var postcode = prompt("Please enter your postcode", "");
-            localStorage.setItem("Home", postcode)
             localStorage.setItem("Sum", 0)
             window.location = "Pages/Instructions.html"
 
