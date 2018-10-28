@@ -1,22 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo');
 
 body {
-    background-image:url("Pictures/badger.jpg");
+    background-image:url("../Images/backbadger.png");
     overflow-x: hidden;
 }
 h1, h2 {
     color: white; 
     text-align: center;
-    font-family: 'Abril Fatface', cursive
+    font-family: 'Archivo', sans-serif;
+    font-size:2em;
+    font-weight: bold;
 }
 
 p, ul {
+    background-color: grey;
     font-family: 'Archivo', sans-serif;
+    font-size:1.2em;
     color: white;
     text-align: left;
     padding-left: 10%;
     padding-right: 10%;
+    font-weight: bold;
 }
+#video{width:100%;}
 
 .modal-body {
     background-color: black;
