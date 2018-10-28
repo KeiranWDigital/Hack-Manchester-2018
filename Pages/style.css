@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo');
 
 body {
-    background-image:url("pictures/badger.jpg");
+    background-image:url("Pictures/badger.jpg");
     overflow-x: hidden;
 }
 h1, h2 {

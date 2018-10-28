@@ -1,6 +1,15 @@
 <!DOCTYPE html >
 
 <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>Travel Badger</title>
@@ -22,6 +31,62 @@
 </head>
 
 <body>
+    <!-- Achievement modals--------------------------------->
+    <link rel="stylesheet" type="text/css" href="Pages/style.css">
+    <div class="modal fade" id="Badge1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">First Badger!</h4>
+                </div>
+
+
+
+                <div class="modal-body">
+                    <p>Well look at you! Congratulations on earning your first badger!
+                        <br><br>
+                        Keep on exploring to collect the sett ;)
+                        <br><br>
+                        <img class="center-block img-responsive" src="Pages\Pictures\TravelBadger1.jpeg" alt="First Badge">
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Badge2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Second Badger!</h4>
+                </div>
+
+                </head>
+
+                <div class="modal-body">
+                    <p>Erm wait...this is a demo. You aren't meant to get two badgers.
+                        <br><br>
+                        Please, don't break it...
+                        <br><br>
+                        <img class="center-block" src="Pictures/Badges/Badger2.png" alt="Second Badge">
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--Map Scripts-->
     <div id="map"></div>
 
     <script>
@@ -32,12 +97,12 @@
             marker.setMap(null);
         }
         var image = {
-            url: 'http://127.0.0.1/Hack-Manchester-2018/Images/badger-pngrepo-com.png',
+            url: 'https://85bf8b91.ngrok.io/Hack-Manchester-2018/Images/badger-pngrepo-com.png',
 
         };
 
         var image2 = {
-            url: 'http://127.0.0.1/Hack-Manchester-2018/Images/badger-pngrepo-com(1).png',
+            url: 'https://85bf8b91.ngrok.io/Hack-Manchester-2018/Images/badger-pngrepo-com(1).png',
 
         };
 
@@ -57,7 +122,10 @@
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: new google.maps.LatLng(53.4771396, -2.2546459),
-                zoom:17,
+                zoom: 17,
+                tilt: 45,
+                heading: 90,
+                rotateControl: true,
                 styles: [
                     {
                         "featureType": "administrative",
@@ -187,16 +255,16 @@
                 clickableIcons: false
 
             });
-          
+
             draw_current()
             setInterval(draw_current, 5000)
             var markers_list = [];
 
-          
 
-                function draw_current() {
-                
-                
+
+            function draw_current() {
+
+
                 console.log("Location")
                 // Try HTML5 geolocation.
                 if (navigator.geolocation) {
@@ -220,17 +288,17 @@
 
                             },
                             id: 1
-                            
+
 
                         });
 
-                markers_list.push(current_marker);  
-                
-                console.log(markers_list[0])
+                        markers_list.push(current_marker);
+
+                        console.log(markers_list[0])
                         console.log(current_marker.id)
                         // To add the marker to the map, call setMap();
                         current_marker.setMap(map);
-                        setTimeout(function(){ current_marker.setMap(null); }, 5000);
+                        setTimeout(function () { current_marker.setMap(null); }, 5000);
                         //set center of map to current location 
                         map.setCenter(new google.maps.LatLng(pos.lat, pos.lng));
                     }, function () {
@@ -243,16 +311,16 @@
 
 
                 var infoWindow = new google.maps.InfoWindow;
-                
 
-                
-            }
-            
-            function remove(current_marker){
-                
+
 
             }
- 
+
+            function remove(current_marker) {
+
+
+            }
+
 
 
             // Change this depending on the name of your PHP or XML file
@@ -290,10 +358,10 @@
             });
         }
 
-function changeMarkerPosition(marker,lat,lng) {
-    var latlng = new google.maps.LatLng(lat, lng);
-    mark.setPosition(latlng);
-}
+        function changeMarkerPosition(marker, lat, lng) {
+            var latlng = new google.maps.LatLng(lat, lng);
+            mark.setPosition(latlng);
+        }
 
         function downloadUrl(url, callback) {
             var request = window.ActiveXObject ?
@@ -315,16 +383,36 @@ function changeMarkerPosition(marker,lat,lng) {
     </script>
     <script>
         console.log(localStorage.getItem("Sum"))
-    if (localStorage.getItem("Sum") == null){
-        var postcode = prompt("Please enter your postcode", "");
-        localStorage.setItem("Home", postcode)
-        localStorage.setItem("Sum",0)
-        window.location = "Pages/Instructions.html"
+        if (localStorage.getItem("Sum") == null) {
+            var postcode = prompt("Please enter your postcode", "");
+            localStorage.setItem("Home", postcode)
+            localStorage.setItem("Sum", 0)
+            window.location = "Pages/Instructions.html"
 
-    }
+        }
+
+        if (localStorage.getItem("Sum") == 1 && localStorage.getItem("1") == null) {
+            console.log("Badge1")
+            $("#Badge1").modal('show');
+            localStorage.setItem("1",1)
+
+        }
+
+        if (localStorage.getItem("Sum") == 2 && localStorage.getItem("2") == null) {
+            console.log("Badge1")
+            $("#Badge2").modal('show');
+            localStorage.setItem("2",1)
+
+        }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeRmfR_ykc83fzYlkT8JT7zb3xtxyAJwE&callback=initMap">
     </script>
+
+
+    <!--Badge modals----------------------------------------------------------------------------------------------->
+
+
+
 </body>
 
 </html>
